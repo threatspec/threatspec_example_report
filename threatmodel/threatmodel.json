@@ -1,0 +1,127 @@
+{
+  "mitigations": [
+    {
+      "control": "#strict_file_permissions",
+      "threat": "#unauthorised_access",
+      "component": "#webapp_filesystem",
+      "source": {
+        "annotation": "@mitigates WebApp:FileSystem against unauthorised access with strict file permissions",
+        "code": "func (p *Page) save() error {",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 28
+      }
+    },
+    {
+      "control": "#basic_input_validation",
+      "threat": "#resource_access_abuse",
+      "component": "#webapp_web",
+      "source": {
+        "annotation": "@mitigates WebApp:Web against resource access abuse with basic input validation",
+        "code": "func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.HandlerFunc {",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 85
+      }
+    },
+    {
+      "control": "#nonprivileged_port",
+      "threat": "#privilege_escalation",
+      "component": "#webapp_web",
+      "source": {
+        "annotation": "@mitigates WebApp:Web against privilege escalation with non-privileged port",
+        "code": "func main() {",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 97
+      }
+    }
+  ],
+  "exposures": [
+    {
+      "threat": "#xss_injection",
+      "component": "#webapp_app",
+      "details": "insufficient input validation",
+      "source": {
+        "annotation": "@exposes WebApp:App to XSS injection with insufficient input validation",
+        "code": "func editHandler(w http.ResponseWriter, r *http.Request, title string) {",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 53
+      }
+    },
+    {
+      "threat": "#content_injection",
+      "component": "#webapp_app",
+      "details": "insufficient input validation",
+      "source": {
+        "annotation": "@exposes WebApp:App to content injection with insufficient input validation",
+        "code": "func saveHandler(w http.ResponseWriter, r *http.Request, title string) {",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 62
+      }
+    }
+  ],
+  "transfers": [
+    {
+      "threat": "#cwe_319_cleartext_transmission",
+      "source_component": "#webapp_web",
+      "destination_component": "#user_browser",
+      "details": "non-sensitive information",
+      "source": {
+        "annotation": "@transfers @cwe_319_cleartext_transmission from WebApp:Web to User:Browser with non-sensitive information",
+        "code": "func main() {",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 98
+      }
+    }
+  ],
+  "acceptances": [
+    {
+      "threat": "#arbitrary_file_writes",
+      "component": "#webapp_filesystem",
+      "details": "filename restrictions",
+      "source": {
+        "annotation": "@accepts arbitrary file writes to WebApp:FileSystem with filename restrictions",
+        "code": "func (p *Page) save() error {",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 27
+      }
+    },
+    {
+      "threat": "#arbitrary_file_reads",
+      "component": "#webapp_filesystem",
+      "details": "filename restrictions",
+      "source": {
+        "annotation": "@accepts arbitrary file reads to WebApp:FileSystem with filename restrictions",
+        "code": "func loadPage(title string) (*Page, error) {",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 34
+      }
+    }
+  ],
+  "connections": [
+    {
+      "source_component": "#user_browser",
+      "destination_component": "#webapp_web",
+      "direction": "to",
+      "details": "HTTP:8080",
+      "source": {
+        "annotation": "@connects User:Browser to WebApp:Web with HTTP:8080",
+        "code": "http.ListenAndServe(\":8080\", nil)",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 119
+      }
+    }
+  ],
+  "reviews": [
+    {
+      "component": "#webapp_web",
+      "details": "Is this a security feature?",
+      "source": {
+        "annotation": "@review WebApp:Web Is this a security feature?",
+        "code": "err = ioutil.WriteFile(\"final-port.txt\", []byte(l.Addr().String()), 0644)",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 110
+      }
+    }
+  ],
+  "tests": [],
+  "run_id": "4b064fc41c0d4997b9af2669dbe28d92"
+}

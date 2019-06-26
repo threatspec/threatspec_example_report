@@ -1,0 +1,22 @@
+{
+  "controls": {
+    "#strict_file_permissions": {
+      "id": "#strict_file_permissions",
+      "run_id": "4b064fc41c0d4997b9af2669dbe28d92",
+      "name": "strict file permissions",
+      "description": ""
+    },
+    "#basic_input_validation": {
+      "id": "#basic_input_validation",
+      "run_id": "4b064fc41c0d4997b9af2669dbe28d92",
+      "name": "basic input validation",
+      "description": ""
+    },
+    "#nonprivileged_port": {
+      "id": "#nonprivileged_port",
+      "run_id": "4b064fc41c0d4997b9af2669dbe28d92",
+      "name": "non-privileged port",
+      "description": ""
+    }
+  }
+}
