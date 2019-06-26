@@ -4,7 +4,7 @@ A threatspec project.
 
 # Diagram
 
-![Diagram](ThreatModel.png "Threat Model Diagram")
+![Diagram](ThreatModel.gv.png "Threat Model Diagram")
 
 # Threats
 

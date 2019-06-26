@@ -61,58 +61,58 @@ basic input validation" color="#27ae60"]
 #nonprivileged_port
 
 non-privileged port" color="#27ae60"]
-	"20c356c19dad4315ac8d43a6bf5240ac" [label="Exposure
+	"6ed72432fbf7401590ad1703277b9bb9" [label="Exposure
 
 insufficient input validation" color="#c0392b"]
-	"20c356c19dad4315ac8d43a6bf5240ac" -> "#webapp_app" [color="#c0392b" concentrate=true]
-	"#xss_injection" -> "20c356c19dad4315ac8d43a6bf5240ac" [color="#c0392b" concentrate=true]
-	"69f85b70e9e94114a0125f238e03ce6b" [label="Exposure
+	"6ed72432fbf7401590ad1703277b9bb9" -> "#webapp_app" [color="#c0392b" concentrate=true]
+	"#xss_injection" -> "6ed72432fbf7401590ad1703277b9bb9" [color="#c0392b" concentrate=true]
+	"5efd9fdcfe91439da2a48393246e82a0" [label="Exposure
 
 insufficient input validation" color="#c0392b"]
-	"69f85b70e9e94114a0125f238e03ce6b" -> "#webapp_app" [color="#c0392b" concentrate=true]
-	"#content_injection" -> "69f85b70e9e94114a0125f238e03ce6b" [color="#c0392b" concentrate=true]
-	"98ddf94f68cd411c91dd64cb460981f4" [label="Exposure
+	"5efd9fdcfe91439da2a48393246e82a0" -> "#webapp_app" [color="#c0392b" concentrate=true]
+	"#content_injection" -> "5efd9fdcfe91439da2a48393246e82a0" [color="#c0392b" concentrate=true]
+	"83e46f21a96141989cd72467a084708f" [label="Exposure
 
 insufficient input validation" color="#c0392b"]
-	"98ddf94f68cd411c91dd64cb460981f4" -> "#webapp_app" [color="#c0392b" concentrate=true]
-	"#xss_injection" -> "98ddf94f68cd411c91dd64cb460981f4" [color="#c0392b" concentrate=true]
-	"395917df60c04da1a4790a7fe096137c" [label="Exposure
+	"83e46f21a96141989cd72467a084708f" -> "#webapp_app" [color="#c0392b" concentrate=true]
+	"#xss_injection" -> "83e46f21a96141989cd72467a084708f" [color="#c0392b" concentrate=true]
+	"623e271aa8d546688ed3b22099bb857d" [label="Exposure
 
 insufficient input validation" color="#c0392b"]
-	"395917df60c04da1a4790a7fe096137c" -> "#webapp_app" [color="#c0392b" concentrate=true]
-	"#content_injection" -> "395917df60c04da1a4790a7fe096137c" [color="#c0392b" concentrate=true]
-	"59ba2bc2a1694141af6b0676ff293ee7" [label="Accepts
+	"623e271aa8d546688ed3b22099bb857d" -> "#webapp_app" [color="#c0392b" concentrate=true]
+	"#content_injection" -> "623e271aa8d546688ed3b22099bb857d" [color="#c0392b" concentrate=true]
+	"9bc23b91d3694cd2a2bd6572852c4f03" [label="Accepts
 
 filename restrictions" color="#c0392b"]
 	"#arbitrary_file_writes" -> "#webapp_filesystem" [color="#c0392b" concentrate=true]
-	"59ba2bc2a1694141af6b0676ff293ee7" -> "#arbitrary_file_writes" [color="#c0392b" concentrate=true]
-	"7e05419d13d14f2498f415344a367bbf" [label="Accepts
+	"9bc23b91d3694cd2a2bd6572852c4f03" -> "#arbitrary_file_writes" [color="#c0392b" concentrate=true]
+	"2fcb95c1b76a4e97b423d522e2b00d8b" [label="Accepts
 
 filename restrictions" color="#c0392b"]
 	"#arbitrary_file_reads" -> "#webapp_filesystem" [color="#c0392b" concentrate=true]
-	"7e05419d13d14f2498f415344a367bbf" -> "#arbitrary_file_reads" [color="#c0392b" concentrate=true]
-	"1b17ea45ba8a4f66962978c8097f4ad4" [label="Accepts
+	"2fcb95c1b76a4e97b423d522e2b00d8b" -> "#arbitrary_file_reads" [color="#c0392b" concentrate=true]
+	"3bc46f740f0f4b5494ed2cc731af529f" [label="Accepts
 
 filename restrictions" color="#c0392b"]
 	"#arbitrary_file_writes" -> "#webapp_filesystem" [color="#c0392b" concentrate=true]
-	"1b17ea45ba8a4f66962978c8097f4ad4" -> "#arbitrary_file_writes" [color="#c0392b" concentrate=true]
-	"6c286073c8384a1b997407972faa39a2" [label="Accepts
+	"3bc46f740f0f4b5494ed2cc731af529f" -> "#arbitrary_file_writes" [color="#c0392b" concentrate=true]
+	"3fda5baacced462a98ab10f1bf44bf21" [label="Accepts
 
 filename restrictions" color="#c0392b"]
 	"#arbitrary_file_reads" -> "#webapp_filesystem" [color="#c0392b" concentrate=true]
-	"6c286073c8384a1b997407972faa39a2" -> "#arbitrary_file_reads" [color="#c0392b" concentrate=true]
-	"97fa19309fc1463d8b691ac18b72382a" [label="Transfer
+	"3fda5baacced462a98ab10f1bf44bf21" -> "#arbitrary_file_reads" [color="#c0392b" concentrate=true]
+	"5ff4c00128d6427aa78ef3fdd0287fc2" [label="Transfer
 
 non-sensitive information" color="#8e44ad"]
-	"#webapp_web" -> "97fa19309fc1463d8b691ac18b72382a" [color="#f39c12" concentrate=true]
-	"97fa19309fc1463d8b691ac18b72382a" -> "#user_browser" [color="#e74c3c" concentrate=true]
-	"#cwe_319_cleartext_transmission" -> "97fa19309fc1463d8b691ac18b72382a" [color="#8e44ad" concentrate=true]
-	"7408837e9ac14cecabf82c7270be98dd" [label="Transfer
+	"#webapp_web" -> "5ff4c00128d6427aa78ef3fdd0287fc2" [color="#f39c12" concentrate=true]
+	"5ff4c00128d6427aa78ef3fdd0287fc2" -> "#user_browser" [color="#e74c3c" concentrate=true]
+	"#cwe_319_cleartext_transmission" -> "5ff4c00128d6427aa78ef3fdd0287fc2" [color="#8e44ad" concentrate=true]
+	"58de4cc9f6164f799a6e55ac2399f35c" [label="Transfer
 
 non-sensitive information" color="#8e44ad"]
-	"#webapp_web" -> "7408837e9ac14cecabf82c7270be98dd" [color="#f39c12" concentrate=true]
-	"7408837e9ac14cecabf82c7270be98dd" -> "#user_browser" [color="#e74c3c" concentrate=true]
-	"#cwe_319_cleartext_transmission" -> "7408837e9ac14cecabf82c7270be98dd" [color="#8e44ad" concentrate=true]
+	"#webapp_web" -> "58de4cc9f6164f799a6e55ac2399f35c" [color="#f39c12" concentrate=true]
+	"58de4cc9f6164f799a6e55ac2399f35c" -> "#user_browser" [color="#e74c3c" concentrate=true]
+	"#cwe_319_cleartext_transmission" -> "58de4cc9f6164f799a6e55ac2399f35c" [color="#8e44ad" concentrate=true]
 	"#strict_file_permissions" -> "#webapp_filesystem" [color="#27ae60" concentrate=true]
 	"#unauthorised_access" -> "#strict_file_permissions" [color="#f39c12" concentrate=true]
 	"#basic_input_validation" -> "#webapp_web" [color="#27ae60" concentrate=true]
@@ -127,8 +127,8 @@ non-sensitive information" color="#8e44ad"]
 	"#privilege_escalation" -> "#nonprivileged_port" [color="#f39c12" concentrate=true]
 	"#user_browser" -> "#webapp_web" [label="HTTP:8080" concentrate=true]
 	"#user_browser" -> "#webapp_web" [label="HTTP:8080" concentrate=true]
-	b29c2b6b4856417797265875fda94e71 [label="Is this a security feature?"]
-	b29c2b6b4856417797265875fda94e71 -> "#webapp_web"
-	"3c1fec8b0e06403f8e74e6cc1df3ed27" [label="Is this a security feature?"]
-	"3c1fec8b0e06403f8e74e6cc1df3ed27" -> "#webapp_web"
+	bb0103a46b6d46588e598262d7594aba [label="Is this a security feature?"]
+	bb0103a46b6d46588e598262d7594aba -> "#webapp_web"
+	"19227f23c6a3468d9206e2a008c37af7" [label="Is this a security feature?"]
+	"19227f23c6a3468d9206e2a008c37af7" -> "#webapp_web"
 }
