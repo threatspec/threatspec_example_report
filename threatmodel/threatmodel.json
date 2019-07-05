@@ -122,6 +122,17 @@
       }
     }
   ],
-  "tests": [],
-  "run_id": "3100ec13ab6c4e56b45be0485c40395a"
+  "tests": [
+    {
+      "component": "#webapp_web",
+      "control": "#nonprivileged_port",
+      "source": {
+        "annotation": "@tests non-privileged port for WebApp:Web",
+        "code": "// TODO: implment test code here",
+        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
+        "line": 123
+      }
+    }
+  ],
+  "run_id": "f52b635b0ba14bc58d4f0b4499f58c2d"
 }

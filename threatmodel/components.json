@@ -2,55 +2,43 @@
   "components": {
     "#webapp_filesystem": {
       "id": "#webapp_filesystem",
-      "run_id": "3100ec13ab6c4e56b45be0485c40395a",
+      "run_id": "f52b635b0ba14bc58d4f0b4499f58c2d",
       "name": "WebApp:FileSystem",
       "description": "",
       "paths": [
         [
           "WebApp"
-        ],
-        [
-          "User"
         ]
       ]
     },
     "#webapp_app": {
       "id": "#webapp_app",
-      "run_id": "3100ec13ab6c4e56b45be0485c40395a",
+      "run_id": "f52b635b0ba14bc58d4f0b4499f58c2d",
       "name": "WebApp:App",
       "description": "",
       "paths": [
         [
           "WebApp"
-        ],
-        [
-          "User"
         ]
       ]
     },
     "#webapp_web": {
       "id": "#webapp_web",
-      "run_id": "3100ec13ab6c4e56b45be0485c40395a",
+      "run_id": "f52b635b0ba14bc58d4f0b4499f58c2d",
       "name": "WebApp:Web",
       "description": "",
       "paths": [
         [
           "WebApp"
-        ],
-        [
-          "User"
         ]
       ]
     },
     "#user_browser": {
       "id": "#user_browser",
-      "run_id": "3100ec13ab6c4e56b45be0485c40395a",
+      "run_id": "f52b635b0ba14bc58d4f0b4499f58c2d",
       "name": "User:Browser",
       "description": "",
       "paths": [
-        [
-          "WebApp"
-        ],
         [
           "User"
         ]

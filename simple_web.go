@@ -119,3 +119,6 @@ func main() {
 	http.ListenAndServe(":8080", nil) // @connects User:Browser to WebApp:Web with HTTP:8080
 
 }
+
+// @tests non-privileged port for WebApp:Web
+// TODO: implment test code here
