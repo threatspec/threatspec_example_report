@@ -1,5 +1,6 @@
 # threatspec_example_report
-A full example report
+
+A full example report. See [ThreatModel.md](ThreatModel.md)
 
 Created using the `simple_web.go` file from `https://github.com/threatspec/threatspec_examples`.
 
