@@ -30,12 +30,6 @@ The following library files have also been create:
         
 $ threatspec report
 Generating report...
-
-The following threat model markdown report has been created:
-
-    ThreatModel.md
-
-The following visualisation image used in the report has also been created:
-
-    ThreatModel.gv.png
+The following threat model visualisation image has been created: ThreatModel.md.png
+The following threat model markdown report has been created: ThreatModel.md
 ```
