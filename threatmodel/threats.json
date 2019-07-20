@@ -1,52 +1,57 @@
 {
   "threats": {
-    "#arbitrary_file_writes": {
-      "id": "#arbitrary_file_writes",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
+    "#file_writes": {
+      "id": "#file_writes",
+      "run_id": "ad746cb2653a46e2bb552bbd58c2e4fb",
       "name": "arbitrary file writes",
-      "description": ""
+      "description": "An attacker can make arbitrary changes to files on the file system, for example overwriting /etc/hosts.",
+      "custom": {
+        "impact": "high"
+      }
     },
-    "#unauthorised_access": {
-      "id": "#unauthorised_access",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
-      "name": "unauthorised access",
-      "description": ""
+    "#xss": {
+      "id": "#xss",
+      "run_id": "ad746cb2653a46e2bb552bbd58c2e4fb",
+      "name": "Cross-site Scripting",
+      "description": "Cross-site scripting (XSS) is a type of computer security vulnerability typically found in web applications. XSS enables \nattackers to inject client-side scripts into web pages viewed by other users. A cross-site scripting vulnerability may be \nused by attackers to bypass access controls such as the same-origin policy. Cross-site scripting carried out on websites \naccounted for roughly 84% of all security vulnerabilities documented by Symantec as of 2007. (Wikipedia)",
+      "custom": {
+        "impact": "high"
+      }
     },
     "#arbitrary_file_reads": {
       "id": "#arbitrary_file_reads",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
+      "run_id": "ad746cb2653a46e2bb552bbd58c2e4fb",
       "name": "arbitrary file reads",
-      "description": ""
-    },
-    "#xss_injection": {
-      "id": "#xss_injection",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
-      "name": "XSS injection",
-      "description": ""
+      "description": "",
+      "custom": {}
     },
     "#content_injection": {
       "id": "#content_injection",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
+      "run_id": "ad746cb2653a46e2bb552bbd58c2e4fb",
       "name": "content injection",
-      "description": ""
+      "description": "",
+      "custom": {}
     },
     "#resource_access_abuse": {
       "id": "#resource_access_abuse",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
+      "run_id": "ad746cb2653a46e2bb552bbd58c2e4fb",
       "name": "resource access abuse",
-      "description": ""
+      "description": "",
+      "custom": {}
     },
     "#privilege_escalation": {
       "id": "#privilege_escalation",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
+      "run_id": "ad746cb2653a46e2bb552bbd58c2e4fb",
       "name": "privilege escalation",
-      "description": ""
+      "description": "",
+      "custom": {}
     },
     "#cwe_319_cleartext_transmission": {
       "id": "#cwe_319_cleartext_transmission",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
+      "run_id": "ad746cb2653a46e2bb552bbd58c2e4fb",
       "name": "@cwe_319_cleartext_transmission",
-      "description": ""
+      "description": "",
+      "custom": {}
     }
   }
 }

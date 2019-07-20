@@ -1,60 +1,57 @@
 {
   "mitigations": [
     {
-      "control": "#strict_file_permissions",
-      "threat": "#unauthorised_access",
-      "component": "#webapp_filesystem",
-      "source": {
-        "annotation": "@mitigates WebApp:FileSystem against unauthorised access with strict file permissions",
-        "code": "func (p *Page) save() error {",
-        "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 28
-      }
-    },
-    {
       "control": "#basic_input_validation",
       "threat": "#resource_access_abuse",
       "component": "#webapp_web",
+      "description": "",
+      "custom": {},
       "source": {
         "annotation": "@mitigates WebApp:Web against resource access abuse with basic input validation",
-        "code": "func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.HandlerFunc {",
+        "code": "func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.HandlerFunc {\n    return func(w http.ResponseWriter, r *http.Request) {\n        m := validPath.FindStringSubmatch(r.URL.Path)\n        if m == nil {\n            http.NotFound(w, r)\n",
         "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 85
+        "line": 104
       }
     },
     {
       "control": "#nonprivileged_port",
       "threat": "#privilege_escalation",
       "component": "#webapp_web",
+      "description": "",
+      "custom": {},
       "source": {
         "annotation": "@mitigates WebApp:Web against privilege escalation with non-privileged port",
-        "code": "func main() {",
+        "code": "func main() {\n    flag.Parse()\n    http.HandleFunc(\"/view/\", makeHandler(viewHandler))\n    http.HandleFunc(\"/edit/\", makeHandler(editHandler))\n    http.HandleFunc(\"/save/\", makeHandler(saveHandler))\n",
         "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 97
+        "line": 116
       }
     }
   ],
   "exposures": [
     {
-      "threat": "#xss_injection",
+      "threat": "#xss",
       "component": "#webapp_app",
       "details": "insufficient input validation",
+      "description": "",
+      "custom": {},
       "source": {
-        "annotation": "@exposes WebApp:App to XSS injection with insufficient input validation",
-        "code": "func editHandler(w http.ResponseWriter, r *http.Request, title string) {",
+        "annotation": "@exposes WebApp:App to #xss with insufficient input validation",
+        "code": "func editHandler(w http.ResponseWriter, r *http.Request, title string) {\n    p, err := loadPage(title)\n    if err != nil {\n        p = &Page{Title: title}\n    }\n",
         "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 53
+        "line": 72
       }
     },
     {
       "threat": "#content_injection",
       "component": "#webapp_app",
       "details": "insufficient input validation",
+      "description": "",
+      "custom": {},
       "source": {
         "annotation": "@exposes WebApp:App to content injection with insufficient input validation",
-        "code": "func saveHandler(w http.ResponseWriter, r *http.Request, title string) {",
+        "code": "func saveHandler(w http.ResponseWriter, r *http.Request, title string) {\n    body := r.FormValue(\"body\")\n    p := &Page{Title: title, Body: []byte(body)}\n    err := p.save()\n    if err != nil {\n",
         "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 62
+        "line": 81
       }
     }
   ],
@@ -64,35 +61,41 @@
       "source_component": "#webapp_web",
       "destination_component": "#user_browser",
       "details": "non-sensitive information",
+      "description": "",
+      "custom": {},
       "source": {
         "annotation": "@transfers @cwe_319_cleartext_transmission from WebApp:Web to User:Browser with non-sensitive information",
-        "code": "func main() {",
+        "code": "func main() {\n    flag.Parse()\n    http.HandleFunc(\"/view/\", makeHandler(viewHandler))\n    http.HandleFunc(\"/edit/\", makeHandler(editHandler))\n    http.HandleFunc(\"/save/\", makeHandler(saveHandler))\n",
         "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 98
+        "line": 117
       }
     }
   ],
   "acceptances": [
     {
-      "threat": "#arbitrary_file_writes",
+      "threat": "#file_writes",
       "component": "#webapp_filesystem",
-      "details": "filename restrictions",
+      "details": "filename restrictions that limit the possible filenames written to by an attacker",
+      "description": "",
+      "custom": {},
       "source": {
-        "annotation": "@accepts arbitrary file writes to WebApp:FileSystem with filename restrictions",
-        "code": "func (p *Page) save() error {",
+        "annotation": "@accepts #file_writes to WebApp:FileSystem with filename restrictions that limit the possible filenames written to by an attacker",
+        "code": "func (p *Page) save() error {\n    filename := p.Title + \".txt\"\n    return ioutil.WriteFile(filename, p.Body, 0600)\n}\n\n",
         "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 27
+        "line": 43
       }
     },
     {
       "threat": "#arbitrary_file_reads",
       "component": "#webapp_filesystem",
       "details": "filename restrictions",
+      "description": "",
+      "custom": {},
       "source": {
         "annotation": "@accepts arbitrary file reads to WebApp:FileSystem with filename restrictions",
-        "code": "func loadPage(title string) (*Page, error) {",
+        "code": "func loadPage(title string) (*Page, error) {\n    filename := title + \".txt\"\n    body, err := ioutil.ReadFile(filename)\n    if err != nil {\n        return nil, err\n",
         "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 34
+        "line": 53
       }
     }
   ],
@@ -102,11 +105,13 @@
       "destination_component": "#webapp_web",
       "direction": "to",
       "details": "HTTP:8080",
+      "description": "",
+      "custom": {},
       "source": {
         "annotation": "@connects User:Browser to WebApp:Web with HTTP:8080",
-        "code": "http.ListenAndServe(\":8080\", nil)",
+        "code": "",
         "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 119
+        "line": 138
       }
     }
   ],
@@ -114,11 +119,13 @@
     {
       "component": "#webapp_web",
       "details": "Is this a security feature?",
+      "description": "",
+      "custom": {},
       "source": {
         "annotation": "@review WebApp:Web Is this a security feature?",
-        "code": "err = ioutil.WriteFile(\"final-port.txt\", []byte(l.Addr().String()), 0644)",
+        "code": "        if err != nil {\n            log.Fatal(err)\n        }\n        s := &http.Server{}\n        s.Serve(l)\n",
         "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 110
+        "line": 129
       }
     }
   ],
@@ -126,13 +133,15 @@
     {
       "component": "#webapp_web",
       "control": "#nonprivileged_port",
+      "description": "",
+      "custom": {},
       "source": {
         "annotation": "@tests non-privileged port for WebApp:Web",
-        "code": "// TODO: implment test code here",
+        "code": "",
         "filename": "/home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go",
-        "line": 123
+        "line": 142
       }
     }
   ],
-  "run_id": "3063593edb8e434295fb04221e12ae6a"
+  "run_id": "ad746cb2653a46e2bb552bbd58c2e4fb"
 }

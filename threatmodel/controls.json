@@ -1,22 +1,18 @@
 {
   "controls": {
-    "#strict_file_permissions": {
-      "id": "#strict_file_permissions",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
-      "name": "strict file permissions",
-      "description": ""
-    },
     "#basic_input_validation": {
       "id": "#basic_input_validation",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
+      "run_id": "ad746cb2653a46e2bb552bbd58c2e4fb",
       "name": "basic input validation",
-      "description": ""
+      "description": "",
+      "custom": {}
     },
     "#nonprivileged_port": {
       "id": "#nonprivileged_port",
-      "run_id": "3063593edb8e434295fb04221e12ae6a",
+      "run_id": "ad746cb2653a46e2bb552bbd58c2e4fb",
       "name": "non-privileged port",
-      "description": ""
+      "description": "",
+      "custom": {}
     }
   }
 }
