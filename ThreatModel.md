@@ -19,6 +19,7 @@ func editHandler(w http.ResponseWriter, r *http.Request, title string) {
     p, err := loadPage(title)
     if err != nil {
         p = &Page{Title: title}
+    }
 
 ```
 /home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go:72
@@ -32,6 +33,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
     body := r.FormValue("body")
     p := &Page{Title: title, Body: []byte(body)}
     err := p.save()
+    if err != nil {
 
 ```
 /home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go:81
@@ -44,10 +46,11 @@ Filename restrictions that limit the possible filenames written to by an attacke
 
 ```
 // @accepts #file_writes to WebApp:FileSystem with filename restrictions that limit the possible filenames written to by an attacker
-/*
-@mitigates WebApp:FileSystem against unauthorised access with #file_perms:
-  description: Access is limited strictly to the owner of the file
-*/
+func (p *Page) save() error {
+    filename := p.Title + ".txt"
+    return ioutil.WriteFile(filename, p.Body, 0600)
+}
+
 
 ```
 /home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go:43
@@ -61,6 +64,7 @@ func loadPage(title string) (*Page, error) {
     filename := title + ".txt"
     body, err := ioutil.ReadFile(filename)
     if err != nil {
+        return nil, err
 
 ```
 /home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go:53
@@ -80,6 +84,7 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Handl
     return func(w http.ResponseWriter, r *http.Request) {
         m := validPath.FindStringSubmatch(r.URL.Path)
         if m == nil {
+            http.NotFound(w, r)
 
 ```
 /home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go:104
@@ -89,10 +94,11 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Handl
 
 ```
 // @mitigates WebApp:Web against privilege escalation with non-privileged port
-// @transfers @cwe_319_cleartext_transmission from WebApp:Web to User:Browser with non-sensitive information
 func main() {
     flag.Parse()
     http.HandleFunc("/view/", makeHandler(viewHandler))
+    http.HandleFunc("/edit/", makeHandler(editHandler))
+    http.HandleFunc("/save/", makeHandler(saveHandler))
 
 ```
 /home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go:116
@@ -103,7 +109,6 @@ func main() {
 ```
 // @tests non-privileged port for WebApp:Web
 func test_webserver_port() {
-    // TODO: implment test code here
     return
 }
 
@@ -124,6 +129,7 @@ Is this a security feature?
             log.Fatal(err)
         }
         s := &http.Server{}
+        s.Serve(l)
 
 ```
 /home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go:129
@@ -139,7 +145,8 @@ HTTP:8080
 
 }
 
-// @tests non-privileged port for WebApp:Web
+func test_webserver_port() {
+    return
 
 ```
 /home/zeroxten/Downloads/src/threatspec/threatspec_example_report/simple_web.go:138
