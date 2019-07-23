@@ -172,11 +172,6 @@ func test_webserver_port() {
 
 
 ## Cross-site scripting
-| Custom Key | Value |
-| --- | --- |
-| **Impact** | high |
-
-
 
 ### Description
 Cross-site scripting (XSS) is a type of computer security vulnerability typically found in web applications. XSS enables 
